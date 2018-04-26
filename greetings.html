@@ -15,23 +15,43 @@
             render() {
                 return (
                     <div>
-                        <h1>Hello World!</h1>
-                        <Author />
+                        <h1>Hello SeaWorld Restaurant!</h1>
+                        <Chef />
+                        <h3>Today is: {this.props.date.toLocaleDateString()}</h3>
+                        <h4>The catch of the day is: {this.props.catch}</h4>
                     </div>
                 );
             }
         }
-        class Author extends React.Component {
+        class Chef extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    cook: 'Theran',
+                    title: 'Sous Chef'
+                }
+            }
+            
             render() {
                 return (
                     <div>
-                        <h2>Written by: Theran</h2>
+                        <h2>Prepared by: {this.state.cook} - {this.state.title} </h2>
                     </div>
                 );
             }
         }
+
+        const info = {
+            date: new Date()
+        }
+
+        const fish = {
+            catch: 'Grouper'
+        }
+
+
         ReactDOM.render(
-            <Greeting />, document.querySelector('#app')
+            <Greeting date={info.date} catch={fish.catch}/>, document.querySelector('#app')
         )
 
     </script>
